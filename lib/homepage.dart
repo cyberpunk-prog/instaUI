@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instacopy/pages/profile.dart';
 
 import 'body.dart';
 
@@ -27,44 +28,65 @@ class InstaHome extends StatelessWidget {
           color: Colors.white,
           height: 50.0,
           alignment: Alignment.center,
-          child: new BottomAppBar(
-            child: new Row(
-              // alignment: MainAxisAlignment.spaceAround,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                new IconButton(
-                  icon: Icon(
-                    Icons.home,
-                  ),
-                  onPressed: () {},
-                ),
-                new IconButton(
-                  icon: Icon(
-                    Icons.search,
-                  ),
-                  onPressed: null,
-                ),
-                new IconButton(
-                  icon: Icon(
-                    Icons.add_box,
-                  ),
-                  onPressed: null,
-                ),
-                new IconButton(
-                  icon: Icon(
-                    Icons.favorite,
-                  ),
-                  onPressed: null,
-                ),
-                new IconButton(
-                  icon: Icon(
-                    Icons.account_box,
-                  ),
-                  onPressed: null,
-                ),
-              ],
-            ),
-          ),
+          child: BottomNav(),
         ));
+  }
+}
+
+class BottomNav extends StatelessWidget {
+  const BottomNav({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return new BottomAppBar(
+      child: new Row(
+        // alignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          new IconButton(
+            icon: Icon(
+              Icons.home,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InstaHome()),
+              );
+            },
+          ),
+          new IconButton(
+            icon: Icon(
+              Icons.search,
+            ),
+            onPressed: null,
+          ),
+          new IconButton(
+            icon: Icon(
+              Icons.add_box,
+            ),
+            onPressed: null,
+          ),
+          new IconButton(
+            icon: Icon(
+              Icons.favorite,
+            ),
+            onPressed: null,
+          ),
+          new IconButton(
+            icon: Icon(
+              Icons.account_box,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile()),
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
